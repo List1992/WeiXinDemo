@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+       android:shape="rectangle">
+    <!--android:shape="rectangle" 表示这是一个矩形-->
+
+
+    <!--设置背景色-->
+    <solid android:color="@color/white"></solid>
+
+    <!--设置边框的颜色和边框的宽度-->
+    <stroke
+        android:width="1px"
+        android:color="#9b9b9b"></stroke>
+
+    <!--设置圆角-->
+    <corners android:radius="3dp"></corners>
+
+</shape>
