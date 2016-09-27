@@ -8,7 +8,7 @@ android {
         applicationId "tao.test.weixindemo"
         minSdkVersion 15
         targetSdkVersion 24
-        versionCode 2016092701
+        versionCode 2016092702
         versionName "1.0"
     }
     buildTypes {
