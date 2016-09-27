@@ -3,6 +3,7 @@
     <string name="audiobutton_normal">按住说话</string>
     <string name="audiobutton_recording">松开结束</string>
     <string name="audiobutton_cancle">松开手指，取消发送</string>
+    <string name="uptocancel">手指上滑，取消发送</string>
     <string name="name">风清扬</string>
 
 </resources>
