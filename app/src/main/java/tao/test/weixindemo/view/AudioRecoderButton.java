@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.StringDef;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Button;
 
 import tao.test.weixindemo.R;
@@ -13,8 +14,25 @@ import tao.test.weixindemo.R;
  * desc：自定义按钮
  */
 public class AudioRecoderButton extends Button {
+
+    private DialogManager mDialogManager;
+
     public AudioRecoderButton(Context context, AttributeSet attrs) {
         super(context, attrs);
+
+        mDialogManager = new DialogManager(context);
+
+        //长按时的监听
+        setOnLongClickListener(new OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+
+                mDialogManager.showDialog();
+                isRecording = true;
+
+                return false;
+            }
+        });
     }
 
     public AudioRecoderButton(Context context) {
@@ -41,8 +59,7 @@ public class AudioRecoderButton extends Button {
         switch (action) {
 
             case MotionEvent.ACTION_DOWN://按下
-                //按下时
-                isRecording = true;
+
                 //当按下按钮时，改变当前状态为录音状态
                 changeState(State_Recoding);
                 break;
@@ -66,10 +83,14 @@ public class AudioRecoderButton extends Button {
             case MotionEvent.ACTION_UP://抬起
                 //抬起手指时，先判断当前状态
                 if (Current_State == State_Recoding) {
+
+                    //手指抬起时，Dialog隐藏
+                    mDialogManager.diMisss();
                     //如果是正在录音
 
                 } else if (Current_State == State_want_cancle) {
-
+                   //手指抬起时，Dialog隐藏
+                    mDialogManager.diMisss();
                     //如果是取消录音状态
                 }
 
@@ -125,14 +146,21 @@ public class AudioRecoderButton extends Button {
                 case State_Normal://正常状态
                     setSelected(false);
                     setText(R.string.audiobutton_normal);
+
                     break;
                 case State_Recoding://录音状态
                     setSelected(true);
                     setText(R.string.audiobutton_recording);
+                    if (isRecording) {
+                        //录音时的dialog的显示状态
+                        mDialogManager.recording();
+                    }
                     break;
                 case State_want_cancle://取消状态
                     setSelected(true);
                     setText(R.string.audiobutton_cancle);
+
+                    mDialogManager.wantToCancel();
                     break;
             }
         }

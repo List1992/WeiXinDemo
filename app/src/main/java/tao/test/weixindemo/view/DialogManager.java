@@ -16,11 +16,11 @@ import tao.test.weixindemo.R;
  */
 public class DialogManager {
 
-    @BindView(R.id.recorder_dialog_icon)
+
     ImageView mRecorderDialogIcon;
-    @BindView(R.id.recorder_dialog_voice)
+
     ImageView mRecorderDialogVoice;
-    @BindView(R.id.recorder_dialog_label)
+
     TextView mRecorderDialogLabel;
     private Dialog mDialog;
 
@@ -39,7 +39,10 @@ public class DialogManager {
         mDialog = new Dialog(mContext, R.style.Theme_AudioRecorderDialog);
         View view = View.inflate(mContext, R.layout.dialog_recorder, null);
         mDialog.setContentView(view);
-        ButterKnife.bind(view);
+
+        mRecorderDialogIcon = (ImageView) view.findViewById(R.id.recorder_dialog_icon);
+        mRecorderDialogVoice = (ImageView) view.findViewById(R.id.recorder_dialog_voice);
+        mRecorderDialogLabel = (TextView) view.findViewById(R.id.recorder_dialog_label);
 
         mDialog.show();
 
@@ -116,7 +119,7 @@ public class DialogManager {
 
             int resId = mContext.getResources().getIdentifier("v" + level, "drawable", mContext.getPackageName());
             mRecorderDialogVoice.setImageResource(resId);
-            mRecorderDialogLabel.setText(R.string.tooshort);
+            mRecorderDialogLabel.setText(R.string.uptocancel);
         }
     }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="tao.test.weixindemo"
-          android:versionCode="2016092703"
+          android:versionCode="2016092704"
           android:versionName="1.0"
     >
 
